@@ -35,9 +35,10 @@ export class JwtModule {
       providers: [
         {
           provide: HTTP_INTERCEPTORS,
-          useClass: JwtInterceptor,
+          useExisting: JwtInterceptor,
           multi: true
         },
+        JwtInterceptor,
         options.jwtOptionsProvider ||
         {
           provide: JWT_OPTIONS,
